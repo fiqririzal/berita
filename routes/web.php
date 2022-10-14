@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+require_once('includes/kategori.php');
 require_once('includes/berita.php');
 require_once('includes/admin.php');
 

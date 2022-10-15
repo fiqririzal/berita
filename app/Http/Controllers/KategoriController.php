@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,19 +16,16 @@ class KategoriController extends Controller
         $request->validate([
             'kategori'=>'required',
             'deskripsi'=>'required',
-            'slug'=>'required'
         ],[
             'kategori.required'=>'kategori tidak boleh kosong',
             'deskripsi.required'=>'deskripsi tidak boleh kosong',
-            'slug.required'=>'slug tidak boleh kosong'
         ]
     );
     DB::table('kategori')->insert(
         [
-            'kategori'=>$request['kategori'],
-            'deskripsi'=>$request['deskripsi'],
-            'slug'=>$request['slug'],
-
+            'kategori'=>$request->kategori,
+            'deskripsi'=>$request->deskripsi,
+            'slug'=>str::slug($request->kategori),
         ]
         );
         return redirect()->to('/kategori');
@@ -52,16 +50,13 @@ class KategoriController extends Controller
         $request->validate([
             'kategori'=>'required',
             'deskripsi'=>'required',
-            'slug'=>'required'
         ],[
             'kategori.required'=>'kategori tidak boleh kosong',
             'deskripsi.required'=>'deskripsi tidak boleh kosong',
-            'slug.required'=>'slug tidak boleh kosong'
         ]);
         DB::table('kategori')->where('id',$id)->update([
             'kategori'=>$request['kategori'],
             'deskripsi'=>$request['deskripsi'],
-            'slug'=>$request['slug']
         ]);
         return redirect('/kategori');
     }

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\berita;
 use App\kategori;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class BeritaController extends Controller
 {
@@ -50,7 +52,6 @@ class BeritaController extends Controller
             [
                 'judul' => 'required',
                 'gambar' => 'required|mimes:jpeg,jpg,png|max:2200',
-                'slug' => 'required',
                 'isi' => 'required',
                 'kategori_id'=>'required'
             ],
@@ -58,7 +59,6 @@ class BeritaController extends Controller
                 'judul.required' => 'judul tidak boleh kosong',
                 'gambar.required' => 'gambar tidak boleh kosong',
                 'gambar.mimes'=>'minimal 2200',
-                'slug.required' => 'slug tidak boleh kosong',
                 'isi.required' => 'isi tidak boleh kosong'
             ]
         );
@@ -69,9 +69,9 @@ class BeritaController extends Controller
         $berita = new Berita;
         $berita->judul = $request->judul;
         $berita->gambar =$new_gambar;
-        $berita->slug =$request->slug;
         $berita->isi=$request->isi;
         $berita->kategori_id=$request->kategori_id;
+        $berita->slug=$request->slug;
         $berita->save();
 
         $gambar->move('gambar',$new_gambar);
@@ -87,7 +87,9 @@ class BeritaController extends Controller
      */
     public function show($id)
     {
+        $berita = Berita::findOrfail($id)->first();
 
+        return view('berita.show',compact('berita'));
     }
 
     /**
@@ -98,7 +100,15 @@ class BeritaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $kategori = Kategori::all();
+        $berita = Berita::findOrfail($id)->first();
+
+        $data=[
+            'kategori'=>$kategori,
+            'berita'=>$berita
+        ];
+
+        return view('berita.edit',$data);
     }
 
     /**
@@ -110,7 +120,37 @@ class BeritaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate(
+            [
+                'judul' => 'required',
+                'gambar' => '|mimes:jpeg,jpg,png|max:2200',
+                'isi' => 'required',
+                'kategori_id'=>'required'
+            ],
+            [
+                'judul.required' => 'judul tidak boleh kosong',
+                'gambar.mimes'=>'minimal 2200',
+                'isi.required' => 'isi tidak boleh kosong'
+            ]
+
+        );
+        $berita = Berita::find($id);
+        if($request->has('gambar')){
+            $path = "gambar/";
+            File::delete($path.$berita->gambar);
+            $gambar = $request->gambar;
+            $new_gambar = time().'='.$gambar->getClientOriginalName();
+            $gambar->move('gambar/'.$new_gambar);
+
+            $berita-> gambar=$new_gambar;
+        }
+        $berita->judul = $request->judul;
+        $berita->isi=$request->isi;
+        $berita->kategori_id=$request->kategori_id;
+        $berita->slug=$request->slug;
+
+        $berita->save();
+        return redirect('/berita');
     }
 
     /**
@@ -121,6 +161,13 @@ class BeritaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $berita=Berita::find($id);
+
+        $path="gambar/";
+        File::delete($path . $berita->gambar);
+
+        $berita->delete();
+
+        return redirect('/berita');
     }
 }

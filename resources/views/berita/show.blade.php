@@ -1,15 +1,20 @@
-
-
-        @extends('admin.admin')
+@extends('admin.admin')
 
 @section('content')
 <section class="content">
-<div class="card">
-    <div class="card-body">
-        <h1>{{$berita->berita}}</h1>
-<p>{{$berita->isi}}</p>
+    <div class="row">
+    <div class="col-12">
+        <div class="card">
+            <img src="{{asset('gambar/'.$berita->gambar)}}" >
+            <div class="card-body">
+            <h3>{{$berita->judul}}</h3>
+            <p class="card-text">{{($berita->isi)}}</p>
+            <a href="/berita" class="btn btn-info btn-sm">Kembali</a>
+            </div>
+        </div>
     </div>
 </div>
+
     <!-- Default box --
       {{-- <table class="table table-hover table-striped table-border" id="table"><thead>
         <th>#</th>
@@ -34,7 +39,7 @@
     </table>
     </div>
     {{-- @include('') --}}
-      <!-- /.card-body -->
+       /.card-body -->
       <div class="card-footer">
         Footer
       </div>

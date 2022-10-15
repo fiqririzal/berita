@@ -8,37 +8,28 @@
             </div>
             <div class="card-body">
                 <a href="/berita/create" class="btn btn-primary my-3">Tambah</a>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Judul</th>
-                            <th scope="col">Gambar</th>
-                            <th scope="col">Slug</th>
-                            <th scope="col">Isi</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @forelse ($berita as $key => $item)
-                            <tr>
-                                <td>{{ $key * 1 }}</td>
-                                <td>{{ $item->judul }}</td>
-                                <td>{{ $item->gambar }}</td>
-                                <td>{{ $item->slug }}</td>
-                                <td>{{ $item->isi }}</td>
-                                <td>{{ $item->kategori_id }}</td>
-                                <td>
-                                    {{-- <form action="/berita-hapus/{{ $item->id }}" method="post">
+                <div class="d-flex flex-row flex-wrap">
+                    @forelse ($berita as $key => $item)
+                        <div class="card col-4">
+                            <div class="row">
+                                <div class="card-body">
+                                    <img src="{{ asset('gambar/' . $item->gambar) }}" class="card-img-top">
+                                    <h5 class="card-title">{{ $item->judul }}</h5>
+                                    <h3>{{ $item->kategori_id }}</h3>
+                                    <p class="card-text">{{ Str::limit($item->isi, 20) }}</p>
+                                    <form action="/berita/{{ $item->id }}" method="post">
+                                        @method('delete')
                                         @csrf
                                         <a href="/berita/{{ $item->id }}" class="btn btn-info btn-sm">Detail</a>
-                                        <a href="/berita/{{ $item->id }}/edit" class="btn btn-warning btn-sm">Edit</a>
-                                        <input type="submit" class="btn btn-danger btn-sm" value="delete"> --}}
-                                    {{-- </form> --}}
-                            </tr>
-                        @empty
-                        @endforelse
-                    </tbody>
+                                        <a href="/berita/{{ $item->id }}/edit" class="btn btn-warning btn-sm">edit</a>
+                                        <input type="submit" class="btn btn-danger btn-sm" value="delete">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    @empty
+                    @endforelse
+                </div>
                 </table>
             </div>
         </div>

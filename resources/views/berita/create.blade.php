@@ -14,7 +14,6 @@
         @error('judul')
             <div class="alert-danger">{{$message}}</div>
         @enderror
-
         <div class="form-group">
           <label for="gambar">gambar</label>
           <input type="file" class="form-control" id="gambar" name="gambar">
@@ -22,18 +21,17 @@
         @error('deskripsi')
         <div class="alert-danger">{{$message}}</div>
         @enderror
-
         <div class="form-group">
-          <label for="slug">slug</label>
-          <input type="text" class="form-control" id="slug" name="slug">
+          <label for="isi">Isi Berita</label>
+          <textarea name="isi" id="isi" class="form-control"></textarea>
+          {{-- <input type="" class="form-control" id="isi" name="isi"> --}}
         </div>
         @error('slug')
         <div class="alert-danger">{{$message}}</div>
         @enderror
-
         <div class="form-group">
-          <label for="isi">isi</label>
-          <input type="text" class="form-control" id="isi" name="isi">
+          <label for="slug">slug</label>
+          <input type="text" class="form-control" id="slug" name="slug">
         </div>
         @error('slug')
         <div class="alert-danger">{{$message}}</div>

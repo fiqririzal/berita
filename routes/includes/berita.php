@@ -7,5 +7,4 @@ Route::resource('/berita','BeritaController');
 // Route::get('/berita/{id}', 'beritaController@show');
 // Route::post('/berita/{id}', 'beritaController@update');
 // Route::delete('/berita/{id}', 'beritaController@destroy');
-
 ?>

@@ -1,3 +1,4 @@
+<script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
 @extends('admin.admin')
 
 @section('content')
@@ -24,14 +25,10 @@
         <div class="form-group">
           <label for="isi">Isi Berita</label>
           <textarea name="isi" id="isi" class="form-control"></textarea>
+          <script>
+                  CKEDITOR.replace( 'isi' );
+          </script>
           {{-- <input type="" class="form-control" id="isi" name="isi"> --}}
-        </div>
-        @error('slug')
-        <div class="alert-danger">{{$message}}</div>
-        @enderror
-        <div class="form-group">
-          <label for="slug">slug</label>
-          <input type="text" class="form-control" id="slug" name="slug">
         </div>
         @error('slug')
         <div class="alert-danger">{{$message}}</div>

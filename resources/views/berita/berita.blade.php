@@ -15,8 +15,8 @@
                                 <div class="card-body">
                                     <img src="{{ asset('gambar/' . $item->gambar) }}" class="card-img-top">
                                     <h5 class="card-title">{{ $item->judul }}</h5>
-                                    <h3>{{ $item->kategori_id }}</h3>
-                                    <p class="card-text">{{ Str::limit($item->isi, 20) }}</p>
+                                    <p>{{ $item->kategori->kategori }}</p>
+                                    <p class="card-text">{!! Str::limit($item->isi, 20) !!}</p>
                                     <form action="/berita/{{ $item->id }}" method="post">
                                         @method('delete')
                                         @csrf

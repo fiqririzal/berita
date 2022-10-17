@@ -1,3 +1,4 @@
+<script src="https://cdn.ckeditor.com/4.20.0/standard/ckeditor.js"></script>
 @extends('admin.admin')
 
 @section('content')
@@ -34,7 +35,10 @@
 
         <div class="form-group">
           <label for="isi">isi</label>
-          <textarea name="isi"  class="form-control"value="{{$berita->isi}}"></textarea>
+          <textarea name="isi" id="isi" class="form-control">{{$berita->isi}}</textarea>
+          <script>
+                  CKEDITOR.replace( 'isi' );
+          </script>
         </div>
         @error('slug')
         <div class="alert-danger">{{$message}}</div>
@@ -52,8 +56,6 @@
             @endforeach
             </select>
 
-
-            <input type="deskripsi" class="form-control" id="deskripsi" name="deskripsi">
         </div>
         @error('slug')
         <div class="alert-danger">{{$message}}</div>

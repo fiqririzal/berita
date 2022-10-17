@@ -71,7 +71,7 @@ class BeritaController extends Controller
         $berita->gambar =$new_gambar;
         $berita->isi=$request->isi;
         $berita->kategori_id=$request->kategori_id;
-        $berita->slug=$request->slug;
+        $berita->slug = Str::slug($request->judul);
         $berita->save();
 
         $gambar->move('gambar',$new_gambar);

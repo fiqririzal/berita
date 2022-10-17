@@ -8,7 +8,7 @@
             <img src="{{asset('gambar/'.$berita->gambar)}}" >
             <div class="card-body">
             <h3>{{$berita->judul}}</h3>
-            <p class="card-text">{{($berita->isi)}}</p>
+            <p class="card-text">{!!($berita->isi)!!}</p>
             <a href="/berita" class="btn btn-info btn-sm">Kembali</a>
             </div>
         </div>

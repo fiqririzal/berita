@@ -19,7 +19,7 @@ class CreateBeritaTable extends Migration
             $table->string('judul');
             $table->text('gambar');
             $table->string('slug');
-            $table->string('isi');
+            $table->text('isi');
             $table->unsignedBigInteger('kategori_id');
             $table->timestamps();
 

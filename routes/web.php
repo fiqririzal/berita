@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 require_once('includes/kategori.php');
 require_once('includes/berita.php');
 require_once('includes/admin.php');
+require_once('includes/view.php');
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,6 @@ require_once('includes/admin.php');
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });

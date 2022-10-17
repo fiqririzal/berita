@@ -34,7 +34,7 @@
 
         <div class="form-group">
           <label for="isi">isi</label>
-          <input type="text" class="form-control" value="{{$berita->isi}}" id="isi" name="isi">
+          <textarea name="isi"  class="form-control"value="{{$berita->isi}}"></textarea>
         </div>
         @error('slug')
         <div class="alert-danger">{{$message}}</div>

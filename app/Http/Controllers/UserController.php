@@ -50,9 +50,9 @@ class UserController extends Controller
             'error' => 'Email / Password salah'
         ])->withInput($request->all);
     }
-    public function logout(){
+    public function logout(){   
         Auth::logout();
-        return redirect()->to('/');
+        return redirect()->to('/admin');
     }
     public function view()
     {

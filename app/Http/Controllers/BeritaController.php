@@ -87,7 +87,7 @@ class BeritaController extends Controller
      */
     public function show($id)
     {
-        $berita = Berita::findOrfail($id)->first();
+        $berita = Berita::where('id',$id)->first();
 
         return view('berita.show',compact('berita'));
     }
@@ -129,7 +129,7 @@ class BeritaController extends Controller
             ],
             [
                 'judul.required' => 'judul tidak boleh kosong',
-                'gambar.mimes'=>'minimal 2200',
+                'gambar.mimes' =>'minimal 2200',
                 'isi.required' => 'isi tidak boleh kosong'
             ]
 

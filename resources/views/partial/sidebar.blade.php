@@ -49,6 +49,14 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="/view" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                Tampilan
+              </p>
+            </a>
+          </li>
 
         </ul>
       </nav>

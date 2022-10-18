@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\berita;
+use App\kategori;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -65,4 +67,11 @@ class KategoriController extends Controller
 
         return redirect('/kategori');
     }
+    // public function kategori(kategori $kategori){
+    //     return view('frontend.show_kategori',[
+    //         'kategori'=>berita::orderBy('created_at','desc')->limit(5)->get(),
+    //         'posts'=>$kategori->kategori()->latest()->simplePaginate(10),
+    //         'kategori'=>kategori::get(),
+    //     ]);
+    // }
 }

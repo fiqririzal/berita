@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-5">
-                    <h1>Portal PDI</h1>
+                    <h1>Portal Berita JCC</h1>
                     <h5 class="font-weight-normal mt-4 mb-5">
                         Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries.
                     </h5>
@@ -40,7 +40,7 @@
                             <h5 class="mb-0 font-weight-600">
                                 @foreach($kategori as $row)
                                 {{-- <li class="nav-item active"> --}}
-                                  <a class="nav-link" href="">{{ $row->kategori }}</a>
+                                  <a class="nav-link text-light" href="">{{ $row->kategori }}</a>
                                 {{-- </li> --}}
                                 @endforeach
                             </h5>

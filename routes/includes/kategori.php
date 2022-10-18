@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/kategori/create','KategoriController@create');
 Route::get('/kategori','KategoriController@index');
+// Route::get('/kategori{kategori_slug}','KategoriController@kategori');
 Route::post('/kategori','KategoriController@store');
 Route::get('/kategori/{kategori_id}','KategoriController@show');
 Route::get('/kategori/{kategori_id}/edit','KategoriController@edit');

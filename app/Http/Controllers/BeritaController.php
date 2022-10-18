@@ -71,7 +71,7 @@ class BeritaController extends Controller
         $berita->gambar =$new_gambar;
         $berita->isi=$request->isi;
         $berita->kategori_id=$request->kategori_id;
-        $berita->slug = Str::slug($request->judul);
+        $berita->slug = Str::slug($berita->judul);
         $berita->save();
 
         $gambar->move('gambar',$new_gambar);
@@ -87,7 +87,7 @@ class BeritaController extends Controller
      */
     public function show($id)
     {
-        $berita = Berita::where('id',$id)->first();
+        $berita = Berita::where('slug',$id)->first();
 
         return view('berita.show',compact('berita'));
     }

@@ -20,8 +20,8 @@
                                     <form action="/berita/{{ $item->id }}" method="post">
                                         @method('delete')
                                         @csrf
-                                        <a href="/berita/{{ $item->id }}" class="btn btn-info btn-sm">Detail</a>
-                                        <a href="/berita/{{ $item->id }}/edit" class="btn btn-warning btn-sm">edit</a>
+                                        <a href="/berita/{{$item->slug}}" class="btn btn-info btn-sm">Detail</a>
+                                        <a href="/berita/{{$item->id }}/edit" class="btn btn-warning btn-sm">edit</a>
                                         <input type="submit" class="btn btn-danger btn-sm" value="delete">
                                     </form>
                                 </div>
@@ -34,9 +34,8 @@
             </div>
         </div>
         <!-- /.card-body -->
-        <div class="card-footer">
-            Footer
-        </div>
+        {{-- <div class="card-footer">
+        </div> --}}
         <!-- /.card-footer-->
         </div>
         <!-- /.card -->

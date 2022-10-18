@@ -10,10 +10,11 @@ use Illuminate\Support\Facades\DB;
 class FrontendController extends Controller
 {
     public function index(){
+        $query = request('kategori');
         $kategori = kategori::all();
-        $berita = berita::orderBy('id','desc')->first();
+        $berita = berita::where('kategori_id', 'like', "%$query%")->orderBy('id','desc')->first();
         $topNews = berita::orderBy('id','desc')->limit(2)->get();
-        $topNews2 = berita::orderBy('id','desc')->limit(4)->get();
+        $topNews2 = berita::where('kategori_id', 'like',"%$query%")->orderBy('id','desc')->limit(4)->get();
         $data=[
             'kategori'=>$kategori,
             'berita'=>$berita,
@@ -25,7 +26,7 @@ class FrontendController extends Controller
     public function show($id)
     {
         $data=[
-        'berita' => berita::where('id',$id)->first(),
+        'berita' => berita::where('slug',$id)->first(),
         "kategori" => kategori::all()
         // $topNews = topNews::where('id',$id)->first(),
         // $topNews2 = topNews2::where('id',$id)->first()

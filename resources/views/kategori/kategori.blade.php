@@ -40,9 +40,9 @@
             </div>
         </div>
 
-        <div class="card-footer">
+        {{-- <div class="card-footer">
             Footer
-        </div>
+        </div> --}}
         <!-- /.card-footer-->
         </div>
         <!-- /.card -->

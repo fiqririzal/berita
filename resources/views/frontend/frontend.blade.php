@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Portal PDi</title>
+    <title>Portal Berita JCC</title>
     <!-- plugin css for this page -->
     <link rel="stylesheet" href="{{ asset('assets2/vendors/mdi/css/materialdesignicons.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets2/vendors/aos/dist/aos.css/aos.css') }}" />
@@ -18,32 +18,32 @@
     <link rel="stylesheet" href="{{ asset('assets2/css/style.css') }}">
     <!-- endinject -->
 
-    <style>
+    {{-- <style>
         .content-wrapper {
             background-image: url('/bcg.jpg') !important;
         }
-    </style>
+    </style> --}}
 </head>
 
 @include('layouts.navbar')
 <div class="card">
-    <div class="card-header ">
-        <h1>Selamat Datang Di Portal PDI Perjuangan</h1>
+    <div class="card-header text-center">
+        <h1>Selamat Datang Di Portal Berita</h1>
     </div>
 </div>
-<div class="content-wrapper ">
+<div class="content-wrapper bg-success">
     <div class="container">
         <div class="row" data-aos="fade-up">
             <div class="col-xl-8 stretch-card grid-margin">
                 <div class="position-relative">
-                    <img src="{{ asset('gambar/' . $berita->gambar) }}" alt="banner" class="img-fluid" />
+                    <img src="{{asset('gambar/'.$berita->gambar)}}" alt="banner" class="img-fluid" />
                     <div class="banner-content">
                         <div class="badge badge-danger fs-12 font-weight-bold mb-3">
                             global news
                         </div>
                         <h3 class="mb-0">{{ $berita->judul }}</h3>
                         <p>{!! substr($berita->isi, 0, 101) !!}
-                            <a href="/view/{{ $berita->id }}" class="btn btn-info btn-sm">Selanjutnya</a>
+                            <a href="/view/{{ $berita->slug }}" class="btn btn-info btn-sm">Selanjutnya</a>
                         <div class="fs-12">
                             <span class="mr-2">dibuat pada: </span> {{ $berita->created_at }}
                         </div>
@@ -56,7 +56,7 @@
                         <h2>Berita Terbaru</h2>
                         <div class="row">
                             @foreach ($topNews as $key => $topNews)
-                            <a href="/view/{{ $berita->id }}">
+                            <a href="/view/{{$topNews->slug }}">
                                 <div
                                     class="d-flex border-bottom-blue pt-2 pb-2 align-items-center justify-content-between">
                                     <div class="card col-12">
@@ -68,7 +68,7 @@
                                         <div class="pr-3">
                                             <h5>{{ $topNews->judul }}</h5>
                                             <div class="fs-12">
-                                                <span class="mr-2">Photo </span>{{ $topNews->created_at }}
+                                                <span class="mr-2"></span>{{ $topNews->created_at }}
                                             </div>
                                         </div>
                                     </div>
@@ -86,9 +86,11 @@
                             <h2>Category</h2>
                             <ul class="vertical-menu">
                                 @foreach ($kategori as $row)
-                                    <li class="nav-item active">
+                                <li class="nav-item active">
+                                        {{-- <a href="{{route('kategori',$row->slug)}}">{{$row->kategori}}</a> --}}
                                         <a class="nav-link" href="">{{ $row->kategori }}</a>
                                     </li>
+
                                 @endforeach
                             </ul>
                         </div>
@@ -99,7 +101,6 @@
                         <div class="card-body">
                             <div class="row">
                                 @foreach ($topNews2 as $key)
-                                <a href="/view/{{ $berita->id }}">
                                 <div class="col-sm-4 grid-margin">
                                         <div class="position-relative">
                                                 <div class="rotate-img">
@@ -123,7 +124,7 @@
                                             </p>
                                         </div>
                                     @endforeach
-                                </div>
+                                {{-- </div> --}}
                             </a>
                             </div>
                         </div>

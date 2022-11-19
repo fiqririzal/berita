@@ -11,3 +11,4 @@ Route::get('/kategori/{kategori_id}','KategoriController@show');
 Route::get('/kategori/{kategori_id}/edit','KategoriController@edit');
 Route::put('/kategori/{kategori_id}','KategoriController@update');
 Route::post('/kategori-hapus/{kategori_id}','KategoriController@destroy');
+Route::get('/guzzle','KategoriController@guzzle');
